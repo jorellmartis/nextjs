@@ -2,6 +2,7 @@ import React from 'react'
 import { Text } from '../../Typography'
 import styled from 'styled-components'
 import { getStrapiMedia } from '../../../helpers/strapi'
+import { useRouter } from 'next/router'
 
 const Card = styled.div`
   width: 20%;` 
@@ -18,28 +19,34 @@ text-align: center`;
 
 
 export const PropertyCard = ({property}) => {
-  console.log(property,"card content")
+  const router = useRouter()
   return (
     <Card>
+      {router.pathname == '/properties' 
+        ?
+        <Image>
+            <img src={getStrapiMedia(property?.attributes?.image)} alt="Goa International Airport"/>
+        </Image>
+        :
         <Image>
             <img src={getStrapiMedia(property?.property?.data?.attributes?.image)} alt="Goa International Airport"/>
         </Image>
- 
+      }
             {/* <Text level={3}>Title Of Property</Text>
             <Text level={4}>Title Of Property</Text>
             <Text level={4}>Title Of Property</Text> */}
-            {//if we r on property page 
-             // ?       
-                    /* <Content>
-                    <h3>{property?.data?.attributes?.title}</h3>
-                    <h4>{property?.data?.attributes?.ICAO}</h4>
-                    </Content> */
-                // :
-                    /* <Content>
+          {router.pathname == '/properties' 
+                  ?
+                    <Content>
+                    <h3>{property?.attributes?.title}</h3>
+                    <h4>{property?.attributes?.ICAO}</h4>
+                    </Content>
+                  :
+                  <Content>
                     <h3>{property?.property?.data?.attributes?.title}</h3>
                     <h4>{property?.property?.data?.attributes?.ICAO}</h4>
-                    </Content>} */
-      
+                  </Content>
+          }      
     </Card>
   )
 }
