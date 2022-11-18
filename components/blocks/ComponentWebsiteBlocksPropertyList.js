@@ -2,7 +2,6 @@ import React from 'react'
 import PropertyList from './PropertyList';
 
 const ComponentWebsiteBlocksPropertyList = ({block}) => {
-  console.log(block, "blockrender")
   return (
     <>
     <h2>{block?.title}</h2>
