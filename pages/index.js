@@ -4,7 +4,7 @@ import apolloClient from '../helpers/apollo'
 import { GET_PAGE_DATA } from "../queries/pages"
 import { getVariableValues } from "graphql"
 import FullBlockRender from "../components/FullBlockRender"
-import PageBanner from "../components/PageBanner"
+import PageBanner from "../components/blocks/PageBanner"
 //STYLED COMPONENTS BASIC 
 // const Text = styled.h1`
 // color: red;
@@ -14,10 +14,10 @@ import PageBanner from "../components/PageBanner"
 // color: ${(props) => props.theme.primaryColor}
 // `;
 export default function Home({pageData}) {
+  console.log(pageData,"some info")
   return (
     <>
     <h1>{pageData?.title}</h1>
-    <PageBanner/>
     <FullBlockRender blocks={pageData.blocks}/>
       {/* <PropertyList/> */}
       {/* <Text>This is red text yo</Text>

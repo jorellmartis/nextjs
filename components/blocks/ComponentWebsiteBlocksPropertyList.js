@@ -10,6 +10,7 @@ const ComponentWebsiteBlocksPropertyList = ({block}) => {
         console.log(property)
         return( */}
             <PropertyList block={{
+                isBlock : true,
                 list: block.propertyList,
                 title: "Whatever"
             }}/>

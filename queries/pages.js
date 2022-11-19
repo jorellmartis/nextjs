@@ -14,6 +14,13 @@ query pageData($slug:String){
             title
             slug
             blocks{
+            ... on ComponentWebsiteBlocksPageBanner{
+                __typename
+                title
+                description
+                image{${imageFragment}}
+                
+            } 
             ... on ComponentWebsiteBlocksPropertyList{
                 __typename
                 title
@@ -23,13 +30,7 @@ query pageData($slug:String){
                     attributes{
                         slug
                         title
-                        image{
-                        data{
-                            attributes{
-                            url
-                            alternativeText
-                            }
-                        }
+                        image{${imageFragment}
                         }
                         ICAO  
                         location{

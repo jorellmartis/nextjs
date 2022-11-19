@@ -26,7 +26,7 @@ export const Navbar = () => {
         <nav>
             <ul>
             <li><Link href='/'>Test 1</Link></li>
-            <li><Link href='/'>Test 1</Link></li>
+            <li><Link href='/properties'>Test 1</Link></li>
             <li><Link href='/'>Test 1</Link></li>
             </ul>
         </nav>

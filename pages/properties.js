@@ -26,6 +26,7 @@ const properties = ({pageData}) => {
         <>
         {console.log("pageData", pageData)}
         <PropertyList block={{
+            isBlock : false,
             list: pageData?.pagesProperties?.data,
             title: "Whatever"
         }}/>

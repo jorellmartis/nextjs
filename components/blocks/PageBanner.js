@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Typography } from './/Typography'
-
+import { Typography } from '../Typography'
+import { getStrapiMedia , getStrapiMediaUrl } from '../../helpers/strapi'
 
 const BannerContainer = styled.div`
 ${(props) => props.theme.centerFlex}
@@ -13,24 +13,27 @@ overflow: hidden;
 min-height: 430px;
 `
 const BannerContent = styled.div`
+background: rgba(125, 118, 126, 0.4);
 padding: 0% 15% 0% 15%;
 z-index: 2;
+border-radius: 50px;
 `
 const BannerImage = styled.div`
 width: 100%;
 position: absolute;
 >img{
-  object-fit: contain;
+    min-width: 100% ;   
+    object-fit: contain;
 }`
-const PageBanner = () => {
+const PageBanner = ({pageBanner}) => {
     return (
         <BannerContainer>
             <BannerImage>
-                <img src="/images/banner2.jpg" alt="Banner Image" />
+                <img src={getStrapiMedia(pageBanner?.image)} alt={getStrapiMediaUrl(pageBanner?.image)}/>
             </BannerImage>
             <BannerContent>
-            <Typography level={1}>Title Of Property</Typography>
-            <Typography level={"paramain"}> It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</Typography>
+            <Typography level={1}>{pageBanner?.title}</Typography>
+            <Typography level={"paramain"}>{pageBanner?.description}</Typography>
             
             </BannerContent>
             

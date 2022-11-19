@@ -12,22 +12,20 @@ const FullBlockRender = ({blocks}) => {
                 key = {`section-block-${index}`}
                 />
                 break;
-
             case "ComponentWebsiteBlocksPageBanner":
                 return <ComponentWebsiteBlocksPageBanner 
                 block = {block}
                 key = {`section-block-${index}`}
                 />
                 break;
-    
             default:
                 break;
         }
 
     }
-    return <div>{blocks?.map(( block, index ) => 
+    return <>{blocks?.map(( block, index ) => 
         getComponent(block, index)
-        )}</div>
+        )}</>
 }
 
 export default FullBlockRender

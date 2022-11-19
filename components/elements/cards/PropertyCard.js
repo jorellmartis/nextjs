@@ -1,9 +1,7 @@
 import React from 'react'
 import { Text } from '../../Typography'
 import styled from 'styled-components'
-import { getStrapiMedia } from '../../../helpers/strapi'
-import { useRouter } from 'next/router'
-
+import { getStrapiMedia , getStrapiMediaUrl } from '../../../helpers/strapi'
 const Card = styled.div`
   width: 20%;` 
 
@@ -18,35 +16,36 @@ const Content = styled.div`
 text-align: center`;
 
 
-export const PropertyCard = ({property}) => {
-  const router = useRouter()
+export const PropertyCard = ({property , showContent}) => {
+  console.log(showContent,"pleasework")
+  /* const router = useRouter() */
   return (
     <Card>
-      {router.pathname == '/properties' 
+      { showContent  
         ?
         <Image>
-            <img src={getStrapiMedia(property?.attributes?.image)} alt="Goa International Airport"/>
+            <img src={getStrapiMedia(property?.property?.data?.attributes?.image)} alt={getStrapiMediaUrl(property?.property?.data?.attributes?.image)}/>
         </Image>
         :
         <Image>
-            <img src={getStrapiMedia(property?.property?.data?.attributes?.image)} alt="Goa International Airport"/>
+            <img src={getStrapiMedia(property?.attributes?.image)} alt="Goa International Airport"/>
         </Image>
       }
             {/* <Text level={3}>Title Of Property</Text>
             <Text level={4}>Title Of Property</Text>
             <Text level={4}>Title Of Property</Text> */}
-          {router.pathname == '/properties' 
-                  ?
-                    <Content>
-                    <h3>{property?.attributes?.title}</h3>
-                    <h4>{property?.attributes?.ICAO}</h4>
-                    </Content>
-                  :
-                  <Content>
-                    <h3>{property?.property?.data?.attributes?.title}</h3>
-                    <h4>{property?.property?.data?.attributes?.ICAO}</h4>
-                  </Content>
-          }      
+      { showContent
+              ?
+              <Content>
+                <h3>{property?.property?.data?.attributes?.title}</h3>
+                <h4>{property?.property?.data?.attributes?.ICAO}</h4>
+              </Content>
+              :
+              <Content>
+                <h3>{property?.attributes?.title}</h3>
+                <h4>{property?.attributes?.ICAO}</h4>
+                </Content>
+      }      
     </Card>
   )
 }

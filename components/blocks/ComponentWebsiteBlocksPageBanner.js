@@ -1,8 +1,10 @@
 import React from 'react'
+import PageBanner from './PageBanner'
 
 const ComponentWebsiteBlocksPageBanner = ({block}) => {
+  console.log(block,"page banner data")
   return (
-    <div>ComponentWebsiteBlocksPageBanner</div>
+    <PageBanner pageBanner = {block}/>
   )
 }
 

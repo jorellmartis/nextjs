@@ -21,15 +21,13 @@ const PropertyList = ({block}) => {
   return (
     <PropertyContainer>
     <PropertyContent>
-      {/* {block?.list.map((property, index) => (
-          <PropertyCard key={`property-id-${new Date().getTime}-${index}`}
-            property={property}/>
-      ))} */}
       {block?.list.map((property, index) => (
           <PropertyCard key={`property-id-${new Date().getTime}-${index}`}
             property={property}
+            showContent = {block.isBlock}
           />
       ))}
+
       
     </PropertyContent>
   </PropertyContainer>
