@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { PropertyCard } from '../elements/cards/PropertyCard'
-import { PropertyListObject } from '../../helpers/mock/properties'
 
 const PropertyContainer = styled.div`
 display: flex;
