@@ -9,7 +9,7 @@ export const H1 = styled.h1``;
 // font-size: 35px;
 // `
 // : null}`;
-export const Text = styled.div`
+export const Typography = styled.div`
 ${(props) => props.theme.media.mobile}{
     //Enter media queries for mobile here
 }
@@ -23,8 +23,8 @@ ${({level}) => {
     switch (level) {
         case 1:
             return css`
-            color: red;
-            font-size: 35px;
+            color: #ffffff;
+            font-size: 4rem;
             `;
         case 2:
         return css`
@@ -46,13 +46,12 @@ ${({level}) => {
         color: red;
         font-size: 15px;
         `
-        // case "paragraph":
-        // return css`
-        // font-weight: 500;
-        // font-size: 33px;
-        // line-height: 1;
-        // letter-spacing: -0.06345px;
-        // `
+        case "paramain":
+        return css`
+        font-weight: 500;
+        font-size: 23px;
+        color: whitesmoke;
+        `
         // case "secondary-paragraph":
         // return css`
         // font-weight: 500;

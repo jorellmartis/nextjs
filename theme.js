@@ -7,10 +7,21 @@ const media = {
     tablet: customMediaQuery(768),
     mobile: customMediaQuery(576),
 }
+
+const centerFlex = `
+display: flex;
+width: 100vw;
+height: auto;
+justify-content: center;
+align-items: center;
+`
+    
+
 export const myAppTheme = {
     primaryColor: "#000000",
     secondary: "#ffffff",
-    media
+    media,
+    centerFlex
 }
 export const GlobalStyle = createGlobalStyle`
     *{

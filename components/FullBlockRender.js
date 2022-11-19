@@ -1,5 +1,6 @@
 import React from 'react'
 import ComponentWebsiteBlocksPropertyList from './blocks/ComponentWebsiteBlocksPropertyList'
+import ComponentWebsiteBlocksPageBanner from './blocks/ComponentWebsiteBlocksPageBanner'
 
 const FullBlockRender = ({blocks}) => {
     // console.log(blocks)
@@ -11,7 +12,14 @@ const FullBlockRender = ({blocks}) => {
                 key = {`section-block-${index}`}
                 />
                 break;
-        
+
+            case "ComponentWebsiteBlocksPageBanner":
+                return <ComponentWebsiteBlocksPageBanner 
+                block = {block}
+                key = {`section-block-${index}`}
+                />
+                break;
+    
             default:
                 break;
         }
