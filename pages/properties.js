@@ -22,11 +22,11 @@ const properties = ({filterData}) => {
         <>
         <div>
             <select name="location">
-                {filterData?.listLocations?.data.map((location) => {
-                <option key={`loaction-dropdown-${location?.id}`} value={location?.id}>
-                    {location?.attributes?.title}
-                </option>
-                })}
+                {filterData?.listLocations?.data.map((location) => (
+                    <option key={`location-dropdown-${location?.id}`} value={location?.id} >
+                        {location.attributes.title}
+                    </option>
+                ))}
             </select>
         </div>
         <PropertyList block={{
