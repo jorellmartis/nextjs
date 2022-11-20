@@ -27,3 +27,26 @@ query getproperties{
     }
 }
 `;
+
+export const GET_FILTERS = gql`
+
+query getFilters{
+    listLocations{
+                data{
+                    id
+                    attributes{
+                                title
+                            }
+                }
+            }
+    listRunways{
+                data{
+                    id
+                    attributes{
+                                title
+                                numberOfRunways
+                            }
+                }
+            }
+}
+`;

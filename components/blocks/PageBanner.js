@@ -34,10 +34,7 @@ const PageBanner = ({pageBanner}) => {
             <BannerContent>
             <Typography level={1}>{pageBanner?.title}</Typography>
             <Typography level={"paramain"}>{pageBanner?.description}</Typography>
-            
             </BannerContent>
-            
-
         </BannerContainer>
     )
 }

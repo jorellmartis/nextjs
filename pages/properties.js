@@ -1,37 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import apolloClient from '../helpers/apollo'
-import { GET_PROPERTIES } from '../queries/properties'
+import { GET_PROPERTIES , GET_FILTERS } from '../queries/properties'
 import PropertyList from '../components/blocks/PropertyList'
 
-export const getStaticProps = async () => {
-    let pageData = null;
-    let isError = false;
+const properties = ({filterData}) => {
+    const[properties , setProperties] = useState(null);
+    useEffect(() => {
+        console.log("filter data", filterData)
+        getProperites();
+    }, []);
+    const getProperites = async () => {
     try {
         const { data } = await apolloClient.query({
             query: GET_PROPERTIES,
         });
-        pageData = data;
+        setProperties(data)
+        console.log(data , "filtered properties")
     } catch (error) {
         console.log(error)
     }
-    return {
-        props: {
-            pageData
-        },
-    }
-}
-
-const properties = ({pageData}) => {
+    };
+    console.log(properties,"afterchange")
     return (
         <>
-        {console.log("pageData", pageData)}
+        yolo
+        {console.log( properties?.pagesProperties?.data,"did it load?")}
         <PropertyList block={{
             isBlock : false,
-            list: pageData?.pagesProperties?.data,
+            list: properties?.pagesProperties?.data,
             title: "Whatever"
         }}/>
         </>
     )
 }
-
+export const getStaticProps = async () => {
+    let filterData = null;
+    try {
+        const { data } = await apolloClient.query({
+            query: GET_FILTERS,
+        });
+        filterData = data;   
+    } 
+    catch (error) {
+        console.log(error)
+    }
+    return {
+        props: {
+            filterData
+        },
+    }
+}
 export default properties

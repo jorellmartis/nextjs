@@ -1,5 +1,4 @@
 import React from 'react'
-import { Text } from '../../Typography'
 import styled from 'styled-components'
 import { getStrapiMedia , getStrapiMediaUrl } from '../../../helpers/strapi'
 const Card = styled.div`
