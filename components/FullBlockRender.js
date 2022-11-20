@@ -3,7 +3,6 @@ import ComponentWebsiteBlocksPropertyList from './blocks/ComponentWebsiteBlocksP
 import ComponentWebsiteBlocksPageBanner from './blocks/ComponentWebsiteBlocksPageBanner'
 
 const FullBlockRender = ({blocks}) => {
-    // console.log(blocks)
     const getComponent = (block , index ) => {
         switch (block.__typename) {
             case "ComponentWebsiteBlocksPropertyList":

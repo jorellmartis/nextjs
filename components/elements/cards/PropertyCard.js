@@ -16,8 +16,6 @@ text-align: center`;
 
 
 export const PropertyCard = ({property , showContent}) => {
-  console.log(showContent,"pleasework")
-  /* const router = useRouter() */
   return (
     <Card>
       { showContent  

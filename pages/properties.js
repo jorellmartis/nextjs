@@ -6,7 +6,6 @@ import PropertyList from '../components/blocks/PropertyList'
 const properties = ({filterData}) => {
     const[properties , setProperties] = useState(null);
     useEffect(() => {
-        console.log("filter data", filterData)
         getProperites();
     }, []);
     const getProperites = async () => {
@@ -15,16 +14,21 @@ const properties = ({filterData}) => {
             query: GET_PROPERTIES,
         });
         setProperties(data)
-        console.log(data , "filtered properties")
     } catch (error) {
         console.log(error)
     }
     };
-    console.log(properties,"afterchange")
     return (
         <>
-        yolo
-        {console.log( properties?.pagesProperties?.data,"did it load?")}
+        <div>
+            <select name="location">
+                {filterData?.listLocations?.data.map((location) => {
+                <option key={`loaction-dropdown-${location?.id}`} value={location?.id}>
+                    {location?.attributes?.title}
+                </option>
+                })}
+            </select>
+        </div>
         <PropertyList block={{
             isBlock : false,
             list: properties?.pagesProperties?.data,

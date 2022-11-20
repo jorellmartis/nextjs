@@ -17,7 +17,6 @@ height: auto;
 gap: 2%;
 `
 const PropertyList = ({block}) => {
-  console.log(block.list,"from block")
   return (
     <PropertyContainer>
     <PropertyContent>
