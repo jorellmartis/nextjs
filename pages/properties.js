@@ -11,15 +11,21 @@ const properties = ({filterData}) => {
         getProperites();
     }, []);
     useEffect(() => {
-        console.log(selectedLocation)
+        if(selectedLocation)
+        getProperites();
     }, [selectedLocation]);
     useEffect(() => {
-        console.log("use effect of runways")
+        if(selectedNumberOfRunways)
+        getProperites();
     }, [selectedNumberOfRunways]);
     const getProperites = async () => {
     try {
         const { data } = await apolloClient.query({
             query: GET_PROPERTIES,
+            variables: {
+                ...(selectedLocation ? {location: selectedLocation} : {}),
+                ...(selectedNumberOfRunways ? {numberOfRunways: selectedNumberOfRunways} : {})
+            }
         });
         setProperties(data)
     } catch (error) {
@@ -37,13 +43,14 @@ const properties = ({filterData}) => {
                 Select Location
                 </option>
                 {filterData?.listLocations?.data.map((location) => (
-                    <option key={`location-dropdown-${location?.id}`} value={location?.attributes?.title} >
+                    <option key={`location-dropdown-${location?.id}`} value={location?.id} >
                         {location?.attributes?.title}
                     </option>
                 ))}
             </select>
             <select name="runways"
                 defaultValue={0}
+                onChange={(e) => setSelectedNumberOfRunways(e.target.value)}
             >
                 <option disabled value={0}>
                     Number Of Runways

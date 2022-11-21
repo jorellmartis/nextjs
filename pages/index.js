@@ -19,10 +19,6 @@ export default function Home({pageData}) {
     <>
     <h1>{pageData?.title}</h1>
     <FullBlockRender blocks={pageData.blocks}/>
-      {/* <PropertyList/> */}
-      {/* <Text>This is red text yo</Text>
-      <Text2>This is black text yo</Text2>
-      <Typography text="hellomf" globalConfig={props.globalConfig}/> */}
     </>
   )
 }

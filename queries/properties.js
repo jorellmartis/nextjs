@@ -4,8 +4,19 @@ import { locationFragment } from "./fragments/locationFrag"
 
 
 export const GET_PROPERTIES = gql`
-query getproperties{
-    pagesProperties{
+query getproperties($location:ID, $numberOfRunways:ID){
+    pagesProperties(filters: {
+        location: {
+            id :{
+            eq: $location
+            }
+        }
+        numberOfRunways: {
+            id :{
+            eq: $numberOfRunways
+            }
+        }
+        }){
         data{
             attributes{
                 title
