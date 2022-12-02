@@ -18,6 +18,7 @@ gap: 2%;
 `
 const PropertyList = ({block}) => {
   return (
+    /* If template a*/
     <PropertyContainer>
     <PropertyContent>
       {block?.list?.map((property, index) => (
@@ -28,6 +29,8 @@ const PropertyList = ({block}) => {
       ))}
     </PropertyContent>
   </PropertyContainer>
+    /*If template b*/
+    /* New Styles Here??? */
   )
 }
 

@@ -5,14 +5,17 @@ import { createContext } from 'react'
 import { SEO } from '../components/SEO'
 import { Layout } from '../components/Layout'
 
-const globalConfig = {
-  seo: {
-    metaTitle: "Default Meta Title",
-  },
-}
+
 export const AppContext = createContext({});
 
 function MyApp({ Component, pageProps }) {
+  const globalConfig = {
+    seo: {
+      metaTitle: "Default Meta Title",
+    },
+    headerLinks: pageProps.headerData?.blocks,
+  }
+  console.log(globalConfig,"global ctx")
   return (
     <ThemeProvider theme= {myAppTheme}>
       <GlobalStyle />

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import apolloClient from '../helpers/apollo'
+import { stackData } from '../helpers/commonRequests'
 import { GET_PROPERTIES , GET_FILTERS } from '../queries/properties'
 import PropertyList from '../components/blocks/PropertyList'
 
@@ -81,9 +82,12 @@ export const getStaticProps = async () => {
     catch (error) {
         console.log(error)
     }
+    const commonData = await stackData();
+
     return {
         props: {
-            filterData
+            filterData,
+            headerData: commonData?.headerData,
         },
     }
 }

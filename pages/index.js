@@ -1,8 +1,6 @@
-import { Text } from "../components/Typography"
-import  PropertyList  from "../components/blocks/PropertyList"
+import { stackData } from '../helpers/commonRequests'
 import apolloClient from '../helpers/apollo'
 import { GET_PAGE_DATA } from "../queries/pages"
-import { getVariableValues } from "graphql"
 import FullBlockRender from "../components/FullBlockRender"
 import PageBanner from "../components/blocks/PageBanner"
 //STYLED COMPONENTS BASIC 
@@ -13,8 +11,8 @@ import PageBanner from "../components/blocks/PageBanner"
 // const Text2 = styled.h2`
 // color: ${(props) => props.theme.primaryColor}
 // `;
-export default function Home({pageData}) {
-  console.log(pageData,"some info")
+export default function Home({pageData, headerData}) {
+  console.log(headerData)
   return (
     <>
     <h1>{pageData?.title}</h1>
@@ -38,8 +36,11 @@ export const getStaticProps = async () => {
     console.log(error);
     
   }
+  const commonData = await stackData();
+  stackData();
   return{
     props: {
+      headerData: commonData?.headerData,
       pageData
     }
   }

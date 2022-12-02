@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { AppContext } from '../pages/_app'
 
 const StyledHeader = styled.header`
 nav{
@@ -20,14 +21,15 @@ nav{
     }
 }
 `
-export const Navbar = () => {
+export const Navbar = (props) => {
+    const context = useContext(AppContext)
     return (
     <StyledHeader>
         <nav>
             <ul>
-            <li><Link href='/'>Test 1</Link></li>
-            <li><Link href='/properties'>Test 1</Link></li>
-            <li><Link href='/'>Test 1</Link></li>
+            {context?.headerLinks[0]?.listOfLinks?.map((link, index) => 
+            <li key={link?.id}><Link href={link?.url}>{link?.title}</Link></li>
+            )}
             </ul>
         </nav>
     </StyledHeader>
